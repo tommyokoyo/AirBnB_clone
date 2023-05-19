@@ -6,6 +6,7 @@ Defines all common attributes/methods for other classes
 from uuid import uuid4
 import datetime
 
+
 class BaseModel:
     """ Base Model of the project """
 
@@ -18,12 +19,12 @@ class BaseModel:
         self.id = str(uuid4())
         self.createdAt = datetime.datetime.today()
         self.updatedAt = datetime.datetime.today()
-    
+
     def __str__(self) -> str:
         """ Returns str representation of the Basemodel Instance"""
         clsName = self.__class__.__name__
         return "[{}] ({}) <{}>".format(clsName, self.id, self.__dict__)
-    
+
     def save(self):
         """ Updates the attribute updatedAt with current datetime"""
         self.updatedAt = datetime.datetime.today()
