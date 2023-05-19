@@ -15,7 +15,7 @@ class BaseModel:
                 *args (any): Tuple
                 **kwargs (dict): Take in a key/value pair
         """
-        self.id = str(uuid4)
+        self.id = str(uuid4())
         self.createdAt = datetime.datetime.today()
         self.updatedAt = datetime.datetime.today()
     
