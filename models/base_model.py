@@ -17,8 +17,8 @@ class BaseModel:
                 **kwargs (dict): Take in a key/value pair
         """
         self.id = str(uuid4())
-        self.createdAt = datetime.datetime.today()
-        self.updatedAt = datetime.datetime.today()
+        self.created_at = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
 
     def __str__(self) -> str:
         """ Returns str representation of the Basemodel Instance"""
