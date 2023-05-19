@@ -33,7 +33,7 @@ class BaseModel:
         """ Returns a dict containing key/values of __dict__ instance"""
         instanceDict = self.__dict__.copy()
         instanceDict["__class__"] = self.__class__.__name__
-        instanceDict["createdAt"] = self.createdAt.isoformat()
-        instanceDict["updatedAt"] = self.updatedAt.isoformat()
+        instanceDict["createdAt"] = self.created_at.isoformat()
+        instanceDict["updatedAt"] = self.updated_at.isoformat()
 
         return instanceDict
