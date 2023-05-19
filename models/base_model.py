@@ -23,17 +23,17 @@ class BaseModel:
     def __str__(self) -> str:
         """ Returns str representation of the Basemodel Instance"""
         clsName = self.__class__.__name__
-        return "[{}] ({}) <{}>".format(clsName, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(clsName, self.id, self.__dict__)
 
     def save(self):
         """ Updates the attribute updatedAt with current datetime"""
-        self.updatedAt = datetime.datetime.today()
+        self.updated_at = datetime.datetime.today()
 
     def to_dict(self) -> dict:
         """ Returns a dict containing key/values of __dict__ instance"""
         instanceDict = self.__dict__.copy()
         instanceDict["__class__"] = self.__class__.__name__
-        instanceDict["createdAt"] = self.created_at.isoformat()
-        instanceDict["updatedAt"] = self.updated_at.isoformat()
+        instanceDict["created_at"] = self.created_at.isoformat()
+        instanceDict["updated_at"] = self.updated_at.isoformat()
 
         return instanceDict
