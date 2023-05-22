@@ -43,7 +43,7 @@ class BaseModel:
         clsName = self.__class__.__name__
         return "[{}] ({}) {}".format(clsName, self.id, self.__dict__)
 
-    def save(self): 
+    def save(self):
         """Updates the attribute updatedAt with current datetime"""
         self.updated_at = datetime.datetime.today()
         models.storage.save()
