@@ -4,6 +4,7 @@ Defines all common attributes/methods for other classes
 """
 from uuid import uuid4
 import datetime
+import models
 
 
 class BaseModel:
@@ -20,10 +21,10 @@ class BaseModel:
             for m, n in kwargs.items():
                 if m == '__class__':
                     continue
-                if m == "created_at":
-                    self.__dict__[m] = datetime.datetime.strptime(n, time_format)
-                if m == "updated_at":
-                    self.__dict__[m] = datetime.datetime.strptime(n, time_format)
+                elif m == "created_at":
+                    n = datetime.datetime.strptime(n, time_format)
+                elif m == "updated_at":
+                    n = datetime.datetime.strptime(n, time_format)
                 if 'id' not in kwargs.keys():
                     self.id = str(uuid4())
                 if 'created_at' not in kwargs.keys():
@@ -35,6 +36,7 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.datetime.today()
             self.updated_at = datetime.datetime.today()
+            models.storage.new(self)
 
     def __str__(self) -> str:
         """ Returns str representation of the Basemodel Instance"""
@@ -44,6 +46,7 @@ class BaseModel:
     def save(self): 
         """Updates the attribute updatedAt with current datetime"""
         self.updated_at = datetime.datetime.today()
+        models.storage.save()
 
     def to_dict(self) -> dict:
         """ Returns a dict containing key/values of __dict__ instance"""
