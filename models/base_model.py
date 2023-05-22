@@ -15,16 +15,17 @@ class BaseModel:
                 *args (any): Tuple
                 **kwargs (dict): Take in a key/value pair
         """
-        self.id = str(uuid4())
-        self.created_at = datetime.datetime.today()
-        self.updated_at = datetime.datetime.today()
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
-        if len(kwargs) != 0:
+        if kwargs:
             for m, n in kwargs.items():
                 if m == "created_at" or m == "updated_at":
                     self.__dict__[m] = datetime.datetime.strptime(n, time_format)
                 else:
                     self.__dict__[m] = n
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.datetime.today()
+            self.updated_at = datetime.datetime.today()
 
     def __str__(self) -> str:
         """ Returns str representation of the Basemodel Instance"""
