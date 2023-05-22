@@ -18,10 +18,19 @@ class BaseModel:
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for m, n in kwargs.items():
-                if m == "created_at" or m == "updated_at":
+                if m == '__class__':
+                    continue
+                if m == "created_at":
                     self.__dict__[m] = datetime.datetime.strptime(n, time_format)
-                else:
-                    self.__dict__[m] = n
+                if m == "updated_at":
+                    self.__dict__[m] = datetime.datetime.strptime(n, time_format)
+                if 'id' not in kwargs.keys():
+                    self.id = str(uuid4())
+                if 'created_at' not in kwargs.keys():
+                    self.created_at = datetime.now()
+                if 'updated_at' not in kwargs.keys():
+                    self.updated_at = datetime.now()
+                setattr(self, m, n)
         else:
             self.id = str(uuid4())
             self.created_at = datetime.datetime.today()
