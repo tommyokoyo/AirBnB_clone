@@ -71,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
             if arg not in class_name.keys():
                 print("** class doesn't exist **")
             else:
-                my_Instance = BaseModel()
+                my_Instance = eval(arg)()
                 my_Instance.save()
                 print(my_Instance.id)
     
