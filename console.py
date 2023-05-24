@@ -105,14 +105,14 @@ class HBNBCommand(cmd.Cmd):
         else:
             vals = parser(arg)
             if len(vals) != 2:
-                if vals[0] != BaseModel().__class__.__name__:
+                if vals[0] not in class_name.key():
                     print("** class doesn't exist **")
                 elif len(vals) > 2:
                     pass
                 else:
                     print("** instance id missing **")
             else:
-                if vals[0] != BaseModel().__class__.__name__:
+                if vals[0] not in class_name.keys():
                     print("** class doesn't exist **")
                 else:
                     all_objects = storage.all()
