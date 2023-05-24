@@ -24,7 +24,7 @@ def parser(arg):
                 word = ""
     return input_list
 
-class_name = {"BaseModel": BaseModel().__class__.__name__}
+class_name = {"BaseModel": BaseModel().__class__.__name__, "User":User.__class__.__name__}
 
 class HBNBCommand(cmd.Cmd):
     """
