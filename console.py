@@ -6,6 +6,11 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 def parser(arg):
@@ -24,7 +29,10 @@ def parser(arg):
                 word = ""
     return input_list
 
-class_name = {"BaseModel": BaseModel().__class__.__name__, "User":User.__class__.__name__}
+class_name = {"BaseModel": BaseModel().__class__.__name__, "User":User.__class__.__name__,
+              "City":City.__class__.__name__, "Amenity":Amenity.__class__.__name__,
+              "Place":Place.__class__.__name__, "Review":Review.__class__.__name__,
+              "State":State.__class__.__name__}
 
 class HBNBCommand(cmd.Cmd):
     """
